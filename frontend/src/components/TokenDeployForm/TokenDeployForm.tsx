@@ -3,6 +3,7 @@ import type { DeploymentResult, TokenDeployParams, WalletState } from '../../typ
 import { useTokenDeploy } from '../../hooks/useTokenDeploy';
 import { formatXLM, truncateAddress } from '../../utils/formatting';
 import { BasicInfoStep, type BasicInfoData } from './BasicInfoStep';
+import { FeeDisplay } from './FeeDisplay';
 import { Button } from '../UI/Button';
 import { Input } from '../UI/Input';
 
@@ -200,16 +201,7 @@ export function TokenDeployForm({
                 </div>
             </div>
 
-            <div className="rounded-lg border border-gray-200 p-4">
-                <h4 className="font-medium text-gray-900">Fee Breakdown</h4>
-                <div className="mt-2 space-y-1 text-sm text-gray-700">
-                    <p>Base Fee: {formatXLM(feeBreakdown.baseFee)} XLM</p>
-                    <p>Metadata Fee: {formatXLM(feeBreakdown.metadataFee)} XLM</p>
-                    <p className="font-semibold text-gray-900">
-                        Total: {formatXLM(feeBreakdown.totalFee)} XLM
-                    </p>
-                </div>
-            </div>
+            <FeeDisplay feeBreakdown={feeBreakdown} hasMetadata={hasMetadataInput} />
 
             {status === 'error' && error ? (
                 <div className="rounded-lg border border-red-200 bg-red-50 p-4" role="alert">
