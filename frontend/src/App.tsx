@@ -1,6 +1,7 @@
 import { Header, Container } from "./components/Layout";
-import { Card, ErrorBoundary } from "./components/UI";
+import { ErrorBoundary } from "./components/UI";
 import { ConnectButton } from "./components/WalletConnect";
+import { TokenDeployForm } from "./components/TokenDeployForm";
 
 function App() {
   return (
@@ -14,12 +15,17 @@ function App() {
         </Header>
         <main id="main-content">
           <Container>
-            <Card title="Deploy Your Token">
-              <p className="text-gray-600">
-                Welcome to Stellar Token Deployer. Connect your wallet to get
-                started.
-              </p>
-            </Card>
+            <div className="py-8">
+              <div className="text-center mb-8">
+                <h1 className="text-4xl font-bold text-gray-900 mb-2">
+                  Deploy Your Token
+                </h1>
+                <p className="text-lg text-gray-600">
+                  Create a custom token on the Stellar network in minutes
+                </p>
+              </div>
+              <TokenDeployForm />
+            </div>
           </Container>
         </main>
       </div>
